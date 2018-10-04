@@ -6,9 +6,9 @@
             int index;
             char name[10010];
         }
-        ※index is the index which the next name should insert
-        ※name is store the name, and the maximun of the name is 10010 char.
-        ※The program only can store 1000 data.
+        #index is the index which the next name should insert
+        #name is store the name, and the maximun of the name is 10010 char.
+        #The program only can store 1000 data.
 
     There are four options which the user can choose:
         input "1": read the data from file which the name of the file is "data.csv"
@@ -16,6 +16,6 @@
         input "3": user input the pattern and the program pop the pattern from the main string
         input "0": leave the program
 
-    When the user choose the "2" option, the user can input the Ctrl + Z to finish input data when the user input the name.
+    If the user choose the "2" option, the user can input "-1" to finish input data when the user input the name.
 
     When the user choose the "3" option, this program will use the KMP algorithm to pop the pattern from the main string which is from the data. The program will output lps which is the failure function of the pattern, and output the string after poping the pattern.

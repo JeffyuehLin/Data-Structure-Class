@@ -99,7 +99,8 @@ void write_data(void) //store the data from user
     for (i = 0;; i++)
     {
         printf("===input name\n->");
-        if (scanf("%s", data[i].name) == EOF) //until user stop
+        scanf("%s", data[i].name); //until user stop
+        if (strcmp(data[i].name, "-1") == 0)
             break;
         printf("===input index\n->");
         scanf("%d", &data[i].index);
