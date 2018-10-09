@@ -43,7 +43,7 @@ void get_lps(char *pat, int *lps)
     }
     for (i = 0; i < len_pat; i++) //let lps++
         lps[i]++;
-    printf("lps = {%d", lps[1]); //print lps
+    printf("lps = {%d", lps[0]); //print lps
     for (i = 1; i < len_pat; i++)
         printf(",%d", lps[i]);
     printf("}\n");
@@ -92,6 +92,7 @@ void read_data() //store the data from the file
         data[i].index = atoi(strtok(NULL, "\r\n"));
     }
     print_data(5); //print the data
+    fclose(ftr);
 }
 void write_data(void) //store the data from user
 {
@@ -102,18 +103,24 @@ void write_data(void) //store the data from user
         scanf("%s", data[i].name);           //until user stop
         if (strcmp(data[i].name, "-1") == 0) //if user input -1, stop input
             break;
-        printf("===input index\n->");
-        scanf("%d", &data[i].index);
+        while (1) //if the index is negetive and more than the length of the name, user input again
+        {
+            printf("===input index\n->");
+            scanf("%d", &data[i].index);
+            if (data[i].index >= 0 && data[i].index < strlen(data[i].name))
+                break;
+            printf("The index is must between 0 and (the length of the name - 1)(%d).\n", strlen(data[i].name) - 1);
+        }
     }
     print_data(i); //print the data
 }
-void pop_data(void) //pop the pattern from the string if there is
+void pop_data(void) //pop the pattern from the string if it exists
 {
-    char pat[10010], new_string[10010]; //pat for pattern, tmp for new string
+    char pat[10010]; //pat for pattern
     printf("input pop name\n");
     scanf("%s", pat); //input pattern
     printf("input pop name is : %s\n", pat);
-    int lps[strlen(pat)], match, i, j;
+    int lps[strlen(pat)], match, i;
     get_lps(pat, lps);
     match = pop_pat(pat, lps);
     if (match == -1) //if it isn't match, print the string and return
@@ -121,12 +128,9 @@ void pop_data(void) //pop the pattern from the string if there is
         printf("the output is : %s\n", string);
         return;
     }
-    for (i = 0, j = 0; i < match; i++, j++) //store the new string to the tmp
-        new_string[j] = string[i];
-    for (i = match + strlen(pat); i < strlen(string); i++, j++)
-        new_string[j] = string[i];
-    new_string[j] = '\0';
-    strcpy(string, new_string); //copy the new string to string
+    for (i = match; i < strlen(string) - strlen(pat); i++)
+        string[i] = string[i + strlen(pat)];
+    string[i] = '\0';
     printf("the output is : %s\n", string);
 }
 int main()
