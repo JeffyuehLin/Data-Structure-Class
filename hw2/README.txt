@@ -8,6 +8,6 @@ There are ratA and ratB in the maze. The rat can't move to a barrier or the boun
 
 The program will read a file named "maze.txt" for the data of the maze, and output a file named "result.txt" for the result of the full path.
 
-The max size of the path  is 10000, and the edge of the maze is 17.
+The max size of the path  is 2 * 17 * 17, and the edge of the maze is 17.
 
 When I was writing a program, I didn't know when I was going to judge the direction of the move, I wanted to take the position I had already taken as a barier, or still have to go. Later, according to the description of the textbook, I thought that it should be regarded as a barrier to the position that has already passed, unless there is no way to go.

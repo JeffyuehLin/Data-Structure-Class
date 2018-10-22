@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define max_maze_size 17 //the max size of the maze, 15 + 2
-#define max_path_size 10000
+#define max_path_size (2 * max_maze_size * max_maze_size)
 #define mouse 2 //the sum of the mouse
 typedef struct
 {
