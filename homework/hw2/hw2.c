@@ -1,3 +1,4 @@
+//不保證正確
 #include <stdio.h>
 #include <stdlib.h>
 #define max_maze_size 17 //the max size of the maze, 15 + 2
@@ -47,7 +48,7 @@ void push_path(int index, int r, int c) //push the new path
 }
 Data pop()
 {
-    return stack[top--];
+    return stack[top];
 }
 void map(int index)
 {
@@ -64,7 +65,7 @@ void map(int index)
     top = -1;
     path_size[index] = -1;
     passed[1][1] = 1;
-    push_stack(r, c, 0); //push the first position into the stack
+    push_stack(r, c, 1); //push the first position into the stack
     while (top > -1 && !found)
     {
         position = pop(); //pop the top stack
@@ -82,12 +83,12 @@ void map(int index)
                 push_path(index, next_r, next_c);
                 found = 1;
             }
-            else if (!maze[next_r][next_c] && !passed[next_r][next_c])
+            else if (!maze[next_r][next_c] && passed[next_r][next_c])
             { //if the position can be passed, mark the place, store into stack and path, and move
                 passed[next_r][next_c] = 1;
                 position.row = r;
                 position.col = c;
-                position.dir = ++dir;
+                position.dir = dir;
                 push_stack(position.row, position.col, position.dir);
                 push_path(index, r, c);
                 r = next_r;
