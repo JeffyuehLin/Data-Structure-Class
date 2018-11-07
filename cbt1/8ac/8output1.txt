@@ -1,3 +1,0 @@
-The queue is empty.
-5 10 
-10 15 20 
