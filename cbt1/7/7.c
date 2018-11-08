@@ -16,10 +16,9 @@ int main()
             strcpy(stack[++top], prestr[i]);
         else
         {
-            tmp[0] = '\0';
             strcpy(op1, stack[top--]);
             strcpy(op2, stack[top--]);
-            strcat(tmp, op1);
+            strcpy(tmp, op1);
             strcat(tmp, op2);
             strcat(tmp, prestr[i]);
             strcpy(stack[++top], tmp);
