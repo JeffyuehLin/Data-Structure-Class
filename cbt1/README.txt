@@ -1,6 +1,6 @@
 Data-Structure Class CBT1
 
-The editor: Jeff.Y.Lin. The last edit date: 2018/09/07
+The editor: Jeff.Y.Lin. The last edit date: 2018/09/08
 
 Total questions: 20. Finish questions: 18 (at 2018/09/07 16:00)
 
