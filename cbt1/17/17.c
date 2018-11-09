@@ -1,17 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-int Time(int b) //§Ö³t¾­
-{
-    int ans = 1, a = 2;
-    while(b)
-    {
-        if(b & 1)
-            ans *= a;
-        b >>= 1;
-        a *= a;
-    }
-    return ans - 1;
-}
 void hanoi(int n, char A, char B, char C)
 {
     if (n == 0)
@@ -29,7 +17,7 @@ int main()
     freopen("17input.txt", "r", stdin);
     freopen("17output1.txt", "w", stdout);
     scanf("%d", &n);
-    printf("%d\n", Time(n));
+    printf("%d\n", (1 << n) - 1);
     hanoi(n, 'A', 'B', 'C');
     return 0;
 }
