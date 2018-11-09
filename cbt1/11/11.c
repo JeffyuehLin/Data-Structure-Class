@@ -13,7 +13,7 @@ void printarr(int *arr, int len)
         printf("%d ", arr[i]);
     printf("\n");
 }
-void _heapify(int arr[], int start, int end)
+void min_heapify(int arr[], int start, int end)
 {
     //建立父節點指標和子節點指標
     int dad = start;
