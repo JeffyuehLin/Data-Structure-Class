@@ -13,18 +13,18 @@ void printarr(int *arr, int len)
         printf("%d ", arr[i]);
     printf("\n");
 }
-void max_heapify(int arr[], int start, int end)
+void _heapify(int arr[], int start, int end)
 {
-    //«Ø¥ß¤÷¸`ÂI«ü¼Ğ©M¤l¸`ÂI«ü¼Ğ
+    //å»ºç«‹çˆ¶ç¯€é»æŒ‡æ¨™å’Œå­ç¯€é»æŒ‡æ¨™
     int dad = start;
     int son = dad * 2 + 1;
-    while (son <= end)   //­Y¤l¸`ÂI«ü¼Ğ¦b½d³ò¤º¤~°µ¤ñ¸û
+    while (son <= end)   //è‹¥å­ç¯€é»æŒ‡æ¨™åœ¨ç¯„åœå…§æ‰åšæ¯”è¼ƒ
     {
-        if (son + 1 <= end && arr[son] > arr[son + 1]) //¥ı¤ñ¸û¨â­Ó¤l¸`ÂI¤j¤p¡A¿ï¾Ü³Ì¤pªº
+        if (son + 1 <= end && arr[son] > arr[son + 1]) //å…ˆæ¯”è¼ƒå…©å€‹å­ç¯€é»å¤§å°ï¼Œé¸æ“‡æœ€å°çš„
             son++;
-        if (arr[dad] < arr[son]) //¦pªG¤÷¸`ÂI¤p©ó¤l¸`ÂI¥Nªí½Õ¾ã§¹²¦¡Aª½±µ¸õ¥X¨ç¼Æ
+        if (arr[dad] < arr[son]) //å¦‚æœçˆ¶ç¯€é»å°æ–¼å­ç¯€é»ä»£è¡¨èª¿æ•´å®Œç•¢ï¼Œç›´æ¥è·³å‡ºå‡½æ•¸
             return;
-        else   //§_«h¥æ´«¤÷¤l¤º®e¦AÄ~Äò¤l¸`ÂI©M®]¸`ÂI¤ñ¸û
+        else   //å¦å‰‡äº¤æ›çˆ¶å­å…§å®¹å†ç¹¼çºŒå­ç¯€é»å’Œå­«ç¯€é»æ¯”è¼ƒ
         {
             swap(&arr[dad], &arr[son]);
             dad = son;
@@ -36,11 +36,11 @@ void max_heapify(int arr[], int start, int end)
 void heap_sort(int arr[], int len)
 {
     int i;
-    //ªì©l¤Æ¡Ai±q³Ì«á¤@­Ó¤÷¸`ÂI¶}©l½Õ¾ã
+    //åˆå§‹åŒ–ï¼Œiå¾æœ€å¾Œä¸€å€‹çˆ¶ç¯€é»é–‹å§‹èª¿æ•´
     for (i = len / 2 - 1; i >= 0; i--)
         max_heapify(arr, i, len - 1);
     printarr(arr, len);
-    //¥ı±N²Ä¤@­Ó¤¸¯À©M¤w±Æ¦n¤¸¯À«e¤@¦ì°µ¥æ´«¡A¦A­«·s½Õ¾ã¡Aª½¨ì±Æ§Ç§¹²¦
+    //å…ˆå°‡ç¬¬ä¸€å€‹å…ƒç´ å’Œå·²æ’å¥½å…ƒç´ å‰ä¸€ä½åšäº¤æ›ï¼Œå†é‡æ–°èª¿æ•´ï¼Œç›´åˆ°æ’åºå®Œç•¢
     for (i = len - 1; i > 0; i--)
     {
         swap(&arr[0], &arr[i]);
