@@ -91,6 +91,7 @@ void quick_sort(int *arr, int left, int right, int total) //quick sort
 int main()
 {
     int brr[10000], i = 0, total;
+    freopen("test.txt", "r", stdin);
     while (scanf("%d", &brr[i]) != EOF) //read data
         i++;
     total = i;
