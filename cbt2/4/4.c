@@ -8,24 +8,29 @@ void printdata(int *arr, int total)
 }
 void swap(int *a, int *b, int *arr, int total)
 {
+    int i, tmp_arr[total];
+    for(i = 0; i < total; i++) //copy old array
+        tmp_arr[i] = arr[i];
     int tmp = *a;
     *a = *b;
     *b = tmp;
-    printdata(arr, total);
+    if(check(arr, tmp_arr, total) != 0) //check the old and new array are different
+        printdata(arr, total);
 }
-int check(int *arr, int total)
+int check(int *arr, int *tmp_arr, int total)
 {
-    int i;
-    for(i = 0; i < total - 1; i++)
-        if(arr[i] > arr[i + 1])
-            return 0;
-    return 1;
+    int i, flag = 0;
+    for(i = 0; i < total; i++)
+        if(arr[i] != tmp_arr[i])
+        {
+            flag = 1;
+            break;
+        }
+    return flag;
 }
 void quick_sort(int *arr, int left, int right, int total) //quick sort
 {
     int pivot, i, j;
-    if(check(arr, total) == 1)
-        return 0;
     if (left < right)
     {
         i = left;
