@@ -32,7 +32,7 @@ void dfnlow(int u, int v)
 }
 int main()
 {
-    int i, j, x, tmp;
+    int i, j, x;
     freopen("10input.txt", "r", stdin);
     memset(graph, 0, sizeof(graph));
     memset(dfn, -1, sizeof(dfn));
@@ -54,6 +54,5 @@ int main()
         if(ap[i] == 1)
             printf("%d ", i + 1);
     printf("\n");
-    return ;
-    0;
+    return 0;
 }
