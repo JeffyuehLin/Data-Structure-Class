@@ -18,33 +18,22 @@ void que_push(Elevator ele)
     new->ele = ele;
     new->link = NULL;
     if(rear == NULL)
-    {
         front = new;
-        rear = new;
-    }
     else
-    {
         rear->link = new;
-        rear = new;
-    }
+    rear = new;
 }
 Elevator que_pop(void)
 {
     Que *ptr = front;
     if(front == rear)
-    {
-        front = NULL;
         rear = NULL;
-    }
-    else
-        front = front->link;
+    front = front->link;
     return ptr->ele;
 }
 int que_empty(void)
 {
-    if(front == NULL)
-        return 1;
-    return 0;
+    return front == NULL ? 1 : 0;
 }
 int bfs(int *st, int *visit)
 {
