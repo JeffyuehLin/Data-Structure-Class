@@ -29,7 +29,7 @@ void Kruskal()
 {
     init();
     // 圖上所有邊，依照權重大小，由小到大排序
-    qsort((void *)arr, edge, sizeof(arr[0]), comp); // O(NlogN)
+    qsort(arr, edge, sizeof(arr[0]), comp); // O(NlogN)
     // 依序找出最小生成樹上的n-1條邊
     int i, j;
     // 窮舉圖上所有邊，嘗試作為最小生成樹（森林）

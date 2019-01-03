@@ -11,7 +11,7 @@ int main()
     for(k = 0; k < n; k++) //allCosts
         for(i = 0; i < n; i++)
             for(j = 0; j < n; j++)
-                arr[i][j]=arr[i][j] || arr[i][k] && arr[k][j];
+                arr[i][j] = arr[i][j] || arr[i][k] && arr[k][j];
     for(i = 0; i < n; i++) //output
     {
         for(j = 0; j < n; j++)

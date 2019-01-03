@@ -33,21 +33,18 @@ void quick_sort(int *arr, int left, int right, int total) //quick sort
     int pivot, i, j;
     if (left < right)
     {
-        i = left;
+        i = left + 1;
         j = right + 1;
         pivot = arr[left];
-        do
+        while(i < j)
         {
-            do
+            while (arr[i] < pivot)
                 i++;
-            while (arr[i] < pivot);
-            do
+            while (arr[j] > pivot)
                 j--;
-            while (arr[j] > pivot);
             if (i < j)
                 swap(&arr[i], &arr[j], arr, total);
         }
-        while (i < j);
         swap(&arr[left], &arr[j], arr, total);
         quick_sort(arr, left, j - 1, total);
         quick_sort(arr, j + 1, right, total);
