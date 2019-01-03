@@ -1,48 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-typedef struct node *nodePointer;
-typedef struct node
-{
-    int vertex;
-    nodePointer link;
-} Node;
-typedef struct
-{
-    int count;
-    nodePointer link;
-} hdnodes;
-hdnodes graph[1000];
-int n;
-void insert_link(int i, int j)
-{
-    nodePointer first = graph[i].link, new = malloc(sizeof(Node));
-    new->vertex = j;
-    new->link = NULL;
-    if(first == NULL)
-        graph[i].link = new;
-    else
-    {
-        while(first->link != NULL)
-            first = first->link;
-        first->link = new;
-    }
-}
+int graph[1000][1000], count[1000], n;
 void topsort()
 {
-    int i, j;
-    nodePointer ptr;
+    int i, j, k;
     for(i = 0; i < n; i++)
     {
         for(j = 0; j < n; j++)
-            if(graph[j].count == 0)
+            if(count[j] == 0)
             {
-                graph[j].count = -1;
+                count[j] = -1;
                 break;
             }
         printf("%d ", j + 1);
-        for(ptr = graph[j].link; ptr != NULL; ptr = ptr->link)
-            graph[ptr->vertex].count--;
+        for(k = 0; k < n; k++)
+            if(graph[j][k])
+                count[k]--;
     }
 }
 int main()
@@ -50,17 +24,15 @@ int main()
     int i, j, tmp;
     freopen("1input_1.txt", "r", stdin);
     scanf("%d", &n);
-    memset(graph, 0, sizeof(hdnodes));
+    memset(graph, 0, sizeof(graph));
+    memset(count, 0, sizeof(count));
     for(i = 0; i < n; i++)
     {
         for(j = 0 ; j < n; j++)
         {
-            scanf("%d", &tmp);
-            if(tmp == 1)
-            {
-                graph[j].count++;
-                insert_link(i, j);
-            }
+            scanf("%d", &graph[i][j]);
+            if(graph[i][j] == 1)
+                count[j]++;
         }
     }
     topsort();
