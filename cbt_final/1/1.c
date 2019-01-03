@@ -21,10 +21,9 @@ void topsort()
 }
 int main()
 {
-    int i, j, tmp;
+    int i, j;
     freopen("1input_1.txt", "r", stdin);
     scanf("%d", &n);
-    memset(graph, 0, sizeof(graph));
     memset(count, 0, sizeof(count));
     for(i = 0; i < n; i++)
     {
