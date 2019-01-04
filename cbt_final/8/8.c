@@ -18,7 +18,7 @@ void prim(int adj[n][n])
                 a = i;
             }
     d[a] = 0;
-    parent[a] = 0;
+    parent[a] = a;
     for(i = 0; i < n; i++)
     {
         a = -1;
