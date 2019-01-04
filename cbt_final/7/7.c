@@ -28,8 +28,6 @@ void dijkstra(int w[n][n])
             }
         if (a == -1)
             break;     //起點有連通的最短路徑都已找完
-        if (min == 0x3f3f3f3f) //不連通即是最短路徑長度無限長
-            return;
         visit[a] = 1;
         for (j = 0; j < n; j++) //以邊a,j進行relaxation
             if (!visit[j] && w[a][j] != 0 && d[a] + w[a][j] < d[j])
