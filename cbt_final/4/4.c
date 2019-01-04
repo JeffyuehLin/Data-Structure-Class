@@ -8,25 +8,10 @@ void printdata(int *arr, int total)
 }
 void swap(int *a, int *b, int *arr, int total)
 {
-    int i, tmp_arr[total];
-    for(i = 0; i < total; i++) //copy old array
-        tmp_arr[i] = arr[i];
     int tmp = *a;
     *a = *b;
     *b = tmp;
-    if(check(arr, tmp_arr, total) != 0) //check the old and new array are different
-        printdata(arr, total);
-}
-int check(int *arr, int *tmp_arr, int total)
-{
-    int i, flag = 0;
-    for(i = 0; i < total; i++)
-        if(arr[i] != tmp_arr[i])
-        {
-            flag = 1;
-            break;
-        }
-    return flag;
+    printdata(arr, total);
 }
 void quick_sort(int *arr, int left, int right, int total) //quick sort
 {
@@ -35,17 +20,18 @@ void quick_sort(int *arr, int left, int right, int total) //quick sort
     {
         i = left;
         j = right;
-        pivot = arr[left];
+        pivot = left;
         while(i < j)
         {
-            while(arr[i] <= pivot)
+            while(i <= j && arr[i] <= arr[pivot])
                 i++;
-            while(arr[j] > pivot)
+            while(arr[j] > arr[pivot])
                 j--;
             if (i < j)
                 swap(&arr[i], &arr[j], arr, total);
         }
-        swap(&arr[left], &arr[j], arr, total);
+        if(pivot != j)
+            swap(&arr[pivot], &arr[j], arr, total);
         quick_sort(arr, left, j - 1, total);
         quick_sort(arr, j + 1, right, total);
     }

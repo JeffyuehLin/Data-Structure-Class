@@ -7,7 +7,7 @@ int min(int x, int y)
 {
     return x < y ? x : y;
 }
-void dfnlow(int u, int v)
+void dfs(int u, int v)
 {
     int w, child = 0, ap_flag = 0, i;
     dfn[u] = low[u] = num++;
@@ -19,7 +19,7 @@ void dfnlow(int u, int v)
         if(dfn[w] < 0)
         {
             child++;
-            dfnlow(w, u);
+            dfs(w, u);
             low[u] = min(low[u], low[w]);
             if(low[w] >= dfn[u])
                 ap_flag = 1;
@@ -43,7 +43,7 @@ int main()
     for(i = 0; i < n; i++)
         for(j = 0; j < n; j++)
             scanf("%d", &graph[i][j]);
-    dfnlow(x - 1, -1);
+    dfs(x - 1, -1);
     for(i = 0; i < n; i++)
         printf("%d ", dfn[i]);
     printf("\n");

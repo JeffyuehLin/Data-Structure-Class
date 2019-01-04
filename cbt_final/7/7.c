@@ -1,8 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 int n, source, dist;
-//若要找出某一點的最短路徑，就可以利用parent陣列了。
 void find_path(int x, int *parent)  //印出由起點到x點的最短路徑
 {
     if (x != parent[x]) //先把之前的路徑都印出來
@@ -33,8 +31,7 @@ void dijkstra(int w[n][n])
         if (min == 0x3f3f3f3f) //不連通即是最短路徑長度無限長
             return;
         visit[a] = 1;
-        //以邊a,j進行relaxation
-        for (j = 0; j < n; j++)
+        for (j = 0; j < n; j++) //以邊a,j進行relaxation
             if (!visit[j] && w[a][j] != 0 && d[a] + w[a][j] < d[j])
             {
                 d[j] = d[a] + w[a][j];
